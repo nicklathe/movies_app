@@ -5,11 +5,13 @@ body {
 #header {
 	padding-top: 50px;
 	padding-bottom: 50px;
-	background-color: #DCEBDD;
+	background-color: #4EC6DE;
 }
 
 h1 {
-	font-size: 50px;
+	font-size: 70px;
+	color: #ffffff;
+	font-weight: 100;
 }
 
 #index_body {
@@ -33,17 +35,23 @@ h1 {
 }
 
 li {
-	color: #B1BDB4;
+	color: #EAE2DF;
 	padding-bottom: 15px;
 	text-decoration: none;
+	font-size: 15px
 }
 
 a {
 	text-decoration: none;
-	color: #B1BDB4;
+	color: #EAE2DF;
 }
 
 a:hover {
 	text-decoration: none;
 	color: #000000;
+}
+
+span {
+	font-size: 18px;
+
 }

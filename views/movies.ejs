@@ -5,25 +5,26 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../stylesheet.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <main class="main">
 	<div id="header" class="col-md-12 col-sm-12 text-center">
-		<h1>Info on: <%= Title %></h1>
+		<h1>Info for <%= Title %></h1>
 	</div>
 	<div class="container-fluid">
 		<div id="index_body" class="col-md-12 col-sm-12">
-			<div class="col-md-6 col-sm-6 text-right"
+			<div class="col-md-6 col-sm-6 text-right">
 				<p>
 					<img src="<%= Poster %>">
 				</p>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<li>Title: <%= Title %></li>
-				<li>Year: <%= Year %></li>
-				<li>Genre: <%= Genre %></li>
-				<li>Actors: <%= Actors %></li>
-				<li>Rotten Tomatoe Score: <%= tomatoMeter %></li>
+				<li><span>Title:</span> <%= Title %></li>
+				<li><span>Year:</span> <%= Year %></li>
+				<li><span>Genre:</span> <%= Genre %></li>
+				<li><span>Actors:</span> <%= Actors %></li>
+				<li><span>Rotten Tomatoe Score:</span> <%= tomatoMeter %></li>
 			</div>
 		</div>
 	</div>
