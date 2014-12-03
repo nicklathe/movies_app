@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie Results</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<main class="main">
+	<div id="header" class="col-md-12 col-sm-12 text-center">
+		<h1>Movie Results</h1>
+	</div>
+	<div class="container-fluid">
+		<div id="index_body" class="col-md-12 col-sm-12 col-md-offset-5 col-sm-offset-5">
+			<% for(var i = 0; i < Search.length; i++) { %>
+			<li><a href="/search/<%= Search[i].imdbID %>"><%= Search[i].Title %> (<%= Search[i].Year %>)</a></li>
+			<% } %>
+		</div>
+	</div>
+</main>
+</body>
+</html>

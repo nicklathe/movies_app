@@ -1,0 +1,49 @@
+body {
+	font-family: 'Lato', sans-serif;
+}
+
+#header {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	background-color: #DCEBDD;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+#index_body {
+	padding-top: 100px;
+	min-height: 500px;
+}
+
+.main {
+	background-color: #455250;
+	min-height: 850px;
+}
+
+#btn {
+	background-color: #7F917E;
+	color: white;
+	border-radius: 10px;
+}
+
+#input {
+	border-radius: 10px;
+}
+
+li {
+	color: #B1BDB4;
+	padding-bottom: 15px;
+	text-decoration: none;
+}
+
+a {
+	text-decoration: none;
+	color: #B1BDB4;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #000000;
+}
