@@ -10,21 +10,41 @@
 <body>
 <main class="main">
 	<div id="header" class="col-md-12 col-sm-12 text-center">
-		<h1>Info for <%= Title %></h1>
+		<h1>Info for <%= results.Title %></h1>
 	</div>
 	<div class="container-fluid">
+		<div class="col-md-12 col-sm-12">
+			<ol class="breadcrumb">
+			  <li><a href="/">Home</a></li>
+			  <li><a href="/find">Search</a></li>
+			  <li><a href="/search?title=<%= results.Title %>">Results</a></li>
+			  <li class="active"><%= results.Title %></li>
+			</ol>
+		</div>
 		<div id="index_body" class="col-md-12 col-sm-12">
 			<div class="col-md-6 col-sm-6 text-right">
 				<p>
-					<img src="<%= Poster %>">
+					<img src="<%= results.Poster %>">
 				</p>
 			</div>
 			<div class="col-md-6 col-sm-6">
-				<li><span>Title:</span> <%= Title %></li>
-				<li><span>Year:</span> <%= Year %></li>
-				<li><span>Genre:</span> <%= Genre %></li>
-				<li><span>Actors:</span> <%= Actors %></li>
-				<li><span>Rotten Tomatoe Score:</span> <%= tomatoMeter %></li>
+				
+				<li><span>Title:</span> <%= results.Title %></li>
+				<li><span>Year:</span> <%= results.Year %></li>
+				<li><span>Genre:</span> <%= results.Genre %></li>
+				<li><span>Actors:</span> <%= results.Actors %></li>
+				<li><span>Plot:</span> <%= results.Plot %></li>
+				<li><span>Length:</span> <%= results.Runtime %></li>
+				<li><span>Rated:</span> <%= results.Rated %></li>
+				<li><span>Rotten Tomatoe Score:</span> <%= results.tomatoMeter %></li>
+
+				<form action="/added" method="post">
+					<input type="hidden" name="imdb" value="<%= results.imdbID %>">
+					<input type="hidden" name="title" value="<%= results.Title %>">
+					<input type="hidden" name="year" value="<%= results.Year %>">
+					<button type="submit" class="btn btn-default">Add to Watch List</button>
+				</form>
+
 			</div>
 		</div>
 	</div>

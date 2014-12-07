@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Movie Results</title>
+	<title>Search for a Film</title>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../stylesheet.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
@@ -10,21 +10,26 @@
 <body>
 <main class="main">
 	<div id="header" class="col-md-12 col-sm-12 text-center">
-		<h1>Movie Results</h1>
+		<h1>Search For a Film</h1>
 	</div>
 	<div class="container-fluid">
 		<div class="col-md-12 col-sm-12">
 			<ol class="breadcrumb">
 			  <li><a href="/">Home</a></li>
-			  <li><a href="/find">Search</a></li>
-			  <li class="active">Results</li>
+			  <li class="active">Search</li>
 			</ol>
 		</div>
-		<div id="index_body" class="col-md-12 col-sm-12 col-md-offset-5 col-sm-offset-5">
-			<% for(var i = 0; i < results.Search.length; i++) { %>
-			<li><a href="/search/<%= results.Search[i].imdbID %>"><%= results.Search[i].Title %> (<%= results.Search[i].Year %>)</a></li>
-			<% } %>
+		<div id="index_body" class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3 text-center">
+			<form action="/search" method="get">
 
+				<div class="input-group">
+				    <input type="text" class="form-control" name="title" placeholder="Movie Title">
+				    <span class="input-group-btn">
+				    	<button class="btn btn-default" type="submit">Search</button>
+				    </span>
+   				</div>
+
+			</form>
 		</div>
 	</div>
 </main>

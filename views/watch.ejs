@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Watch List</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<main class="main">
+	<div id="header" class="col-md-12 col-sm-12 text-center">
+		<h1>Watch List</h1>
+	</div>
+	<div class="container-fluid">
+		<div class="col-md-12 col-sm-12">
+			<ol class="breadcrumb">
+			  <li><a href="/">Home</a></li>
+			  <li><a href="/find">Search</a></li>
+			  <li class="active">Watch List</li>
+			</ol>
+		</div>
+		<div id="index_body" class="col-md-12 col-sm-12">
+			<table class="table">
+			<tr>
+				<th></th>
+				<th>Movie Title</th>
+				<th>IMDB</th>
+				<th>Year</th>
+				<th></th>
+				<th></th>
+			</tr>
+
+			<% for(var i = 0; i < watchedMovies.length; i++){ %>
+
+			<tr>
+				<td><%= watchedMovies[i].id %></td>
+				<td><%= watchedMovies[i].title %></td>
+				<td><%= watchedMovies[i].imdb %></td>
+				<td><%= watchedMovies[i].year %></td>
+				<td>
+					<a href="/search/<%= watchedMovies[i].imdb %>">
+						<button type="submit" class="btn btn-default btn-sm">Go To Movie</button>
+					</a>
+				</td>
+				<td>
+					<form action="/delete">
+						<input type="hidden" name="title" value="<%= watchedMovies[i].title %>">
+						<button type="submit" class="btn btn-default btn-sm">Delete Movie</button>
+					</form>
+				</td>
+			</tr>
+
+			<% } %>
+
+			</table>
+		</div>
+	</div>
+</main>
+</body>
+</html>

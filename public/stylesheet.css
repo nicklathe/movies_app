@@ -10,12 +10,26 @@ body {
 
 h1 {
 	font-size: 70px;
-	color: #ffffff;
+	color: #FFFFFF;
 	font-weight: 100;
+}
+
+h3 {
+	color: #FFFFFF;
+	padding-bottom: 50px;
+}
+
+h4 {
+	color: #FFFFFF;
 }
 
 #index_body {
 	padding-top: 100px;
+	min-height: 500px;
+}
+
+#front_page {
+	padding-top: 50px;
 	min-height: 500px;
 }
 
@@ -48,10 +62,32 @@ a {
 
 a:hover {
 	text-decoration: none;
-	color: #000000;
+	color: #4EC6DE;
 }
 
 span {
 	font-size: 18px;
+}
 
+th {
+	color: #FFFFFF;
+	font-size: 20px;
+}
+
+td {
+	color: #FFFFFF;
+}
+
+#main_img {
+	height: 250px;
+	width: 250px;
+	border-radius: 250px;
+}
+
+#space {
+	padding-bottom: 50px;
+}
+
+.breadcrumb {
+	background-color: #455250;
 }
