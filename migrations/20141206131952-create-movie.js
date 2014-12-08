@@ -15,7 +15,7 @@ module.exports = {
         type: DataTypes.STRING
       },
       year: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING
       },
       createdAt: {
         allowNull: false,

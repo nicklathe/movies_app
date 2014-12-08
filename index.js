@@ -13,7 +13,6 @@ app.use(express.static(__dirname + "/public"));
 // Loads home page so user can search for a title
 app.get("/", function(req, res){
   	res.render("index");
-
 });
 
 app.get("/find", function(req, res){
@@ -29,6 +28,7 @@ app.get("/search", function(req, res){
  		};
 	});
 });
+
 //Movies that are selected are displayed on the movies.ejs
 app.get("/search/:imdbID", function(req, res){
 	var imdb = req.params.imdbID;
@@ -40,12 +40,34 @@ app.get("/search/:imdbID", function(req, res){
 	});
 });
 
-// Posts movies to watch list and db
+// // Posts movies to watch list and db
+// app.post("/added", function(req, res){
+//   db.Movie.create(req.body).done(function(err, savedMovie){
+//   res.render("added", {savedMovie:savedMovie});
+//   // res.send(savedMovie);
+//   });
+// });
+
+///////find or create test///////////
 app.post("/added", function(req, res){
-  db.Movie.create(req.body).done(function(err, savedMovie){
-  res.render("added", {savedMovie:savedMovie});
+  db.Movie.findOrCreate({where: req.body}).then(function(savedMovie){
+    // res.send(savedMovie);
+    var movArray = {
+      savedMovie:savedMovie[0],
+      trufalse:savedMovie[1]
+    };
+
+    if(savedMovie[1] === false){
+      res.render("added", movArray);
+    // } else if(savedMovie[1] === true){
+    } else if(savedMovie[1] === true){
+        res.render("added", movArray);
+    };
   });
 });
+////////////////////////////////////////
+
+
 
 // Gets movies stored in db to display on watch page
 app.get("/watch", function(req, res){
@@ -54,16 +76,14 @@ app.get("/watch", function(req, res){
   });
 });
 
-// // Deletes movie from database and watch list
-// app.get("/delete", function(req, res){
-//   db.Movie.find({where: {title: req.body}}).done(function(err, movieToDel){
-//     // res.send(movieToDel);
-//     movieToDel.destroy().done(function(err, deletedMovie){
-//       // res.send(deletedMovie);
-//       res.render("delete", {deletedMovie: deletedMovie});
-//     // });
-//   });
-// });
+// Deletes movie from database and watch list
+app.post("/delete", function(req, res){
+  db.Movie.find({where: {title: req.body.title}}).done(function(err, movieToDel){
+    movieToDel.destroy().done(function(err, deletedMovie){
+      res.render("delete");
+    });
+  });
+});
 
 
 

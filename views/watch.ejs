@@ -15,15 +15,14 @@
 	<div class="container-fluid">
 		<div class="col-md-12 col-sm-12">
 			<ol class="breadcrumb">
-			  <li><a href="/">Home</a></li>
-			  <li><a href="/find">Search</a></li>
-			  <li class="active">Watch List</li>
+			  	<li><a href="/">Home</a></li>
+			  	<li><a href="/find">Search</a></li>
+			  	<li class="active">Watch List</li>
 			</ol>
 		</div>
 		<div id="index_body" class="col-md-12 col-sm-12">
 			<table class="table">
 			<tr>
-				<th></th>
 				<th>Movie Title</th>
 				<th>IMDB</th>
 				<th>Year</th>
@@ -34,7 +33,6 @@
 			<% for(var i = 0; i < watchedMovies.length; i++){ %>
 
 			<tr>
-				<td><%= watchedMovies[i].id %></td>
 				<td><%= watchedMovies[i].title %></td>
 				<td><%= watchedMovies[i].imdb %></td>
 				<td><%= watchedMovies[i].year %></td>
@@ -44,7 +42,7 @@
 					</a>
 				</td>
 				<td>
-					<form action="/delete">
+					<form action="/delete" method="post">
 						<input type="hidden" name="title" value="<%= watchedMovies[i].title %>">
 						<button type="submit" class="btn btn-default btn-sm">Delete Movie</button>
 					</form>

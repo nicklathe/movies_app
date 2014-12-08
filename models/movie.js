@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
   var Movie = sequelize.define("Movie", {
     imdb: DataTypes.STRING,
     title: DataTypes.STRING,
-    year: DataTypes.INTEGER
+    year: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

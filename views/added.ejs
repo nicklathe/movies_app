@@ -15,13 +15,19 @@
 	<div class="container-fluid">
 		<div class="col-md-12 col-sm-12">
 			<ol class="breadcrumb">
-			  <li><a href="/">Home</a></li>
-			  <li><a href="/find">Search</a></li>
-			  <li class="active">Added</li>
+				<li><a href="/watch">Watch List</a></li>
+			  	<li><a href="/">Home</a></li>
+			  	<li><a href="/find">Search</a></li>
+			  	<li class="active">Added</li>
 			</ol>
 		</div>
 		<div id="index_body" class="col-md-12 col-sm-12 text-center">
-			<h3>Thanks, <%= savedMovie.title %> was added to your watch list</h3>
+
+		<% if(trufalse === true){ %>
+			<h3>Thanks, <%= savedMovie.title %> was added to your watch list</h3>  
+		<% } else { %>	
+			<h3><%= savedMovie.title %> already exists in your Watch List</h3>
+		<% } %>
 			<a href="/watch">
 				<button type="submit" class="btn btn-default">Go To Watch List</button>
 			</a>
