@@ -21,10 +21,24 @@
 			  	<li class="active">Results</li>
 			</ol>
 		</div>
-		<div id="index_body" class="col-md-12 col-sm-12 col-md-offset-5 col-sm-offset-5">
-			<% for(var i = 0; i < results.Search.length; i++) { %>
+		<div id="index_body" class="col-md-12 col-sm-12 col-md-offset-4 col-sm-offset-4">
+
+		<% if(typeof results.Search === "undefined") { %>
+
+			<h4>ERROR! That is not a movie title. Please enter a title</h4>
+		</div>
+
+		<div class="col-md-12 col-sm-12 col-md-offset-4 col-sm-offset-4">
+
+		<% } else { %>
+
+		<% for(var i = 0; i < results.Search.length; i++) { %>
+
 			<li><a href="/search/<%= results.Search[i].imdbID %>"><%= results.Search[i].Title %> (<%= results.Search[i].Year %>)</a></li>
+
 			<% } %>
+
+		<% } %>
 
 		</div>
 	</div>

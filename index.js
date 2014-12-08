@@ -22,6 +22,7 @@ app.get("/find", function(req, res){
 // Posts the searched movie title and displays results on search.ejs
 app.get("/search", function(req, res){
 		request('http://www.omdbapi.com/?s=' + req.query.title, function (error, response, body) {
+      if(error) throw err;
   		if (!error && response.statusCode == 200) {
   			var results = JSON.parse(body);
     		res.render("search", {results:results});
@@ -40,7 +41,7 @@ app.get("/search/:imdbID", function(req, res){
 	});
 });
 
-// // Posts movies to watch list and db
+//// ----- Posts movies to watch list and db OUTDATED ------- ///////////////
 // app.post("/added", function(req, res){
 //   db.Movie.create(req.body).done(function(err, savedMovie){
 //   res.render("added", {savedMovie:savedMovie});
@@ -48,26 +49,21 @@ app.get("/search/:imdbID", function(req, res){
 //   });
 // });
 
-///////find or create test///////////
+///////----------------find or create with .spread-------------///////////
 app.post("/added", function(req, res){
-  db.Movie.findOrCreate({where: req.body}).then(function(savedMovie){
-    // res.send(savedMovie);
+  db.Movie.findOrCreate({where: req.body}).spread(function(savedMovie, created){
     var movArray = {
-      savedMovie:savedMovie[0],
-      trufalse:savedMovie[1]
+      savedMovie:savedMovie,
+      created:created
     };
 
-    if(savedMovie[1] === false){
+    if(created === false){
       res.render("added", movArray);
-    // } else if(savedMovie[1] === true){
-    } else if(savedMovie[1] === true){
+    } else if(created === true){
         res.render("added", movArray);
     };
   });
 });
-////////////////////////////////////////
-
-
 
 // Gets movies stored in db to display on watch page
 app.get("/watch", function(req, res){
@@ -76,15 +72,22 @@ app.get("/watch", function(req, res){
   });
 });
 
-// Deletes movie from database and watch list
-app.post("/delete", function(req, res){
-  db.Movie.find({where: {title: req.body.title}}).done(function(err, movieToDel){
-    movieToDel.destroy().done(function(err, deletedMovie){
-      res.render("delete");
-    });
+// Deletes movie from database and watch list OUTDATED
+// app.post("/delete", function(req, res){
+//   db.Movie.find({where: {title: req.body.title}}).done(function(err, movieToDel){
+//     movieToDel.destroy().done(function(err, deletedMovie){
+//       res.render("delete");
+//     });
+//   });
+// });
+
+////////////////// ------------- delete test ------------- ///////////////////
+
+app.delete("/watch/:id", function(req, res){
+  db.Movie.destroy({where: {id: req.params.id}}).then(function(data){
+    res.send({data: data});
   });
 });
-
 
 
 app.listen(3000);
