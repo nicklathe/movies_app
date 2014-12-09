@@ -13,21 +13,19 @@ $(function(){
 			}
 		});
 	});
-	// new add to watch list
+	// add to watch list
+
 	$(".buttonAdd").on("click", function(event){
-		// alert("clicked");
-		var button = $(this);
-		event.preventDefault();
-		$.post("/watch", {
-			imdb: button.data("imdb"),
-			title: button.data("title"),
-			year: button.data("year")
+	var button = $(this);
+	event.preventDefault();
+	$.post("/watch", {
+		imdb: button.data("imdb"),
+		title: button.data("title"),
+		year: button.data("year")
+	},function(data){
+		button.fadeOut();
 		}); 
-		$(this).fadeOut(function(){
-			$(this).remove();
-		});
 	});
-	// end of watch list thing
 });
 
 

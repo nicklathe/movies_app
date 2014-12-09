@@ -41,12 +41,15 @@
 				<li><span>Rated:</span> <%= results.Rated %></li>
 				<li><span>Rotten Tomatoe Score:</span> <%= results.tomatoMeter %></li>
 
-				<!-- <form action="/watch" method="post">
-					<input type="hidden" name="imdb" value="<%= results.imdbID %>">
-					<input type="hidden" name="title" value="<%= results.Title %>">
-					<input type="hidden" name="year" value="<%= results.Year %>"> -->
-					<button type="submit" data-imdb="<%= results.imdbID %>" data-title=" <%= results.Title %> " data-year="<%= results.Year %>" class="buttonAdd btn btn-default">Add to Watch List</button>
-				<!-- </form> -->
+				<% if(movieFound){ %>
+
+				<button disabled class="btn btn-default">In List</button>
+				
+				<% } else { %>
+
+				<button type="submit" data-imdb="<%= results.imdbID %>" data-title=" <%= results.Title %> " data-year="<%= results.Year %>" class="buttonAdd btn btn-default">Add to Watch List</button>
+
+				<% } %>
 
 			</div>
 		</div>

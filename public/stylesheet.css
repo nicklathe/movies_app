@@ -91,3 +91,7 @@ td {
 .breadcrumb {
 	background-color: #455250;
 }
+
+.hidden {
+	display: none;
+}

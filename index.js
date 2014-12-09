@@ -36,7 +36,11 @@ app.get("/search/:imdbID", function(req, res){
 		request('http://www.omdbapi.com/?i=' + imdb + "&tomatoes=true&", function (error, response, body) {
   		if (!error && response.statusCode == 200) {
   			var results = JSON.parse(body);
-    		res.render("movies", {results:results});
+        db.Movie.count({where: {imdb:results.imdbID}}).then(function(foundItem){
+          var wasFound = foundItem > 0;
+          res.render("movies", {results:results, movieFound:wasFound});
+        });
+    		// res.render("movies", {results:results});
  		};
 	});
 });
@@ -57,21 +61,16 @@ app.get("/search/:imdbID", function(req, res){
 //   });
 // });
 
-// Find or create TEST //
+// Find or create with jQuery//
 
 app.post("/watch", function(req, res){
   // console.log(req.body);
   db.Movie.findOrCreate({where: req.body}).spread(function(savedMovie, created){
-    var movArray = {
+    var movieObj = {
       savedMovie:savedMovie,
       created:created
     };
-    res.send(movArray);
-    // if(created === false){
-    //   res.send(movArray);
-    // } else if(created === true){
-    //     res.send(movArray);
-    // };
+    res.send(movieObj);
   });
 });
 
