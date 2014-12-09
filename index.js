@@ -41,27 +41,37 @@ app.get("/search/:imdbID", function(req, res){
 	});
 });
 
-//// ----- Posts movies to watch list and db OUTDATED ------- ///////////////
+//Find or create with .spread
 // app.post("/added", function(req, res){
-//   db.Movie.create(req.body).done(function(err, savedMovie){
-//   res.render("added", {savedMovie:savedMovie});
-//   // res.send(savedMovie);
+//   db.Movie.findOrCreate({where: req.body}).spread(function(savedMovie, created){
+//     var movArray = {
+//       savedMovie:savedMovie,
+//       created:created
+//     };
+
+//     if(created === false){
+//       res.render("added", movArray);
+//     } else if(created === true){
+//         res.render("added", movArray);
+//     };
 //   });
 // });
 
-///////----------------find or create with .spread-------------///////////
-app.post("/added", function(req, res){
+// Find or create TEST //
+
+app.post("/watch", function(req, res){
+  // console.log(req.body);
   db.Movie.findOrCreate({where: req.body}).spread(function(savedMovie, created){
     var movArray = {
       savedMovie:savedMovie,
       created:created
     };
-
-    if(created === false){
-      res.render("added", movArray);
-    } else if(created === true){
-        res.render("added", movArray);
-    };
+    res.send(movArray);
+    // if(created === false){
+    //   res.send(movArray);
+    // } else if(created === true){
+    //     res.send(movArray);
+    // };
   });
 });
 
@@ -72,16 +82,7 @@ app.get("/watch", function(req, res){
   });
 });
 
-// Deletes movie from database and watch list OUTDATED
-// app.post("/delete", function(req, res){
-//   db.Movie.find({where: {title: req.body.title}}).done(function(err, movieToDel){
-//     movieToDel.destroy().done(function(err, deletedMovie){
-//       res.render("delete");
-//     });
-//   });
-// });
-
-////////////////// ------------- delete test ------------- ///////////////////
+//Delete from watchlist and db 
 
 app.delete("/watch/:id", function(req, res){
   db.Movie.destroy({where: {id: req.params.id}}).then(function(data){

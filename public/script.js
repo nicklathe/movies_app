@@ -13,4 +13,23 @@ $(function(){
 			}
 		});
 	});
+	// new add to watch list
+	$(".buttonAdd").on("click", function(event){
+		// alert("clicked");
+		var button = $(this);
+		event.preventDefault();
+		$.post("/watch", {
+			imdb: button.data("imdb"),
+			title: button.data("title"),
+			year: button.data("year")
+		}); 
+		$(this).fadeOut(function(){
+			$(this).remove();
+		});
+	});
+	// end of watch list thing
 });
+
+
+
+
