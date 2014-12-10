@@ -23,6 +23,11 @@ h4 {
 	color: #FFFFFF;
 }
 
+h5 {
+	color: #FFFFFF;
+}
+
+
 #index_body {
 	padding-top: 100px;
 	min-height: 500px;
@@ -44,9 +49,9 @@ h4 {
 	border-radius: 10px;
 }
 
-#input {
+/*#input {
 	border-radius: 10px;
-}
+}*/
 
 li {
 	color: #EAE2DF;
@@ -94,4 +99,8 @@ td {
 
 .hidden {
 	display: none;
+}
+
+#comment-list {
+	padding-top: 50px;
 }

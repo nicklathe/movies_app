@@ -1,21 +1,18 @@
 "use strict";
 module.exports = {
   up: function(migration, DataTypes, done) {
-    migration.createTable("movies", {
+    migration.createTable("comments", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-      imdb: {
-        type: DataTypes.STRING
+      comment: {
+        type: DataTypes.TEXT
       },
-      title: {
-        type: DataTypes.STRING
-      },
-      year: {
-        type: DataTypes.STRING
+      movieId: {
+        type: DataTypes.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +25,6 @@ module.exports = {
     }).done(done);
   },
   down: function(migration, DataTypes, done) {
-    migration.dropTable("movies").done(done);
+    migration.dropTable("comments").done(done);
   }
 };
